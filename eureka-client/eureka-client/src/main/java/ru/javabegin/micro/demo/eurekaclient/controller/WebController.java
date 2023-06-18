@@ -11,6 +11,9 @@ public class WebController {
 
     @Value("${eureka.instance.instance-id}")
     private String id;
+//
+//    @Value("${tmpVar}")
+//    private int tmpVar;
 
     @GetMapping("/web")
     public String web(){
