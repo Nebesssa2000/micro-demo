@@ -13,6 +13,7 @@ import ru.javabegin.micro.demo.eurekaclient.repository.UserDto;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Configuration
 public class KafkaProducerConfig {
@@ -23,6 +24,8 @@ public class KafkaProducerConfig {
     public Map<String, Object> producerConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer);
+        props.put(ProducerConfig.CLIENT_ID_CONFIG, UUID.randomUUID().toString());
+        props.put(ProducerConfig.ACKS_CONFIG, "1");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, DoubleSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return props;

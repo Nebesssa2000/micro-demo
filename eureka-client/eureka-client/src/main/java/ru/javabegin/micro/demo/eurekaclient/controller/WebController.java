@@ -32,7 +32,7 @@ public class WebController {
     @Async
     @PostMapping
     public void sendMsg(Double msgId, UserDto msg) {
-        msg.setAge(23L);
+        msg.setAge(24L);
         msg.setName("Bob");
         msg.setAddress(new Address("USA", "Chg", "5Avenue", 2L, 3L));
         kafkaTemplate.send("msg1", msgId, msg)
